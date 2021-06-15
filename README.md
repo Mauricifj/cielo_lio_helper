@@ -11,7 +11,7 @@ In your flutter project add the dependency:
 ```yaml
 dependencies:
   ...
-  cielo_lio_helper: ^1.0.0
+  cielo_lio_helper: ^0.1.0
 ```
 
 For help getting started with Flutter, view the online [documentation](https://flutter.dev/docs).

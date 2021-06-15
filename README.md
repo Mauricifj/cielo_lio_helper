@@ -1,6 +1,6 @@
 # cielo_lio_helper
 
-A Flutter plugin for [Cielo Lio V2](https://developercielo.github.io/manual/cielo-lio).
+A Flutter plugin for [Cielo Lio V2](https://developercielo.github.io/en/manual/cielo-lio).
 
 ## Getting Started
 
@@ -12,13 +12,15 @@ dependencies:
   cielo_lio_helper: ^1.0.0
 ```
 
-For help getting started with Flutter, view the online [documentation](https://flutter.io/).
+For help getting started with Flutter, view the online [documentation](https://flutter.dev/docs).
 
 ## Setup
 
 ### Intent Filter
 
 Set intent filters accordingly to your needs:
+
+#### Print Response Intent Filter Example
 
 ```xml
 <!-- Example of intent filter to receive print responses from Lio, change host and scheme if needed -->
@@ -31,6 +33,32 @@ Set intent filters accordingly to your needs:
 </intent-filter>
 ```
 
+#### Payment Response Intent Filter Example
+
+```xml
+<!-- Example of intent filter to receive payment responses from Lio, change host and scheme if needed -->
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <data
+        android:host="dev.mauricifj"
+        android:scheme="payment_response" />
+</intent-filter>
+```
+
+#### Reversal Response Intent Filter Example
+
+```xml
+<!-- Example of intent filter to receive reversal responses from Lio, change host and scheme if needed -->
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <data
+        android:host="dev.mauricifj"
+        android:scheme="reversal_response" />
+</intent-filter>
+```
+
 ### Init
 
 Init `cielo_lio_helper` by providing the host and schemes from the previous step:
@@ -39,9 +67,9 @@ Init `cielo_lio_helper` by providing the host and schemes from the previous step
 CieloLioHelper.init(
     host: "dev.mauricifj",
     schemes: SchemeAggregate(
-    printResponseScheme: "print_response",
-    paymentResponseScheme: "payment_response",
-    reversalResponseScheme: "reversal_response",
+        printResponseScheme: "print_response",
+        paymentResponseScheme: "payment_response",
+        reversalResponseScheme: "reversal_response",
     ),
 );
 ```
@@ -124,10 +152,10 @@ CieloLioHelper.checkout(request, (response) {
 var request = CancelRequest(
     clientID: "YOUR-CLIENT-ID",
     accessToken: "YOUR-ACCESS-TOKEN",
+    value: paymentResponse.payments[0].amount,
     authCode: paymentResponse.payments[0].authCode,
     cieloCode: paymentResponse.payments[0].cieloCode,
     merchantCode: paymentResponse.payments[0].merchantCode,
-    value: paymentResponse.payments[0].amount,
     id: paymentResponse.id,
 );
 
@@ -139,9 +167,9 @@ CieloLioHelper.cancelPayment(request, (response) {
 ### Print Example
 
 ```dart
-CieloLioHelper.enqueue("SAMPLE TEXT \n\n\n", PrintAlignment.CENTER, 30, 1);
-CieloLioHelper.enqueue("SAMPLE TEXT \n\n\n", PrintAlignment.CENTER, 20, 2);
-CieloLioHelper.enqueue("SAMPLE TEXT \n\n\n", PrintAlignment.CENTER, 10, 2);
+CieloLioHelper.enqueue("SAMPLE TEXT", PrintAlignment.LEFT, 30, 1);
+CieloLioHelper.enqueue("SAMPLE TEXT", PrintAlignment.CENTER, 20, 2);
+CieloLioHelper.enqueue("SAMPLE TEXT\n\n\n", PrintAlignment.RIGHT, 10, 2);
 
 CieloLioHelper.printQueue((LioResponse response) {
     print(response.code);

@@ -1,0 +1,23 @@
+name: cielo_lio_helper
+description: A Flutter plugin for Cielo Lio V2
+version: 0.1.0
+homepage: https://github.com/mauricifj/cielo_lio_helper
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.20.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: dev.mauricifj.cielo_lio_helper
+        pluginClass: CieloLioHelperPlugin

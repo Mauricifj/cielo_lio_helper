@@ -1,0 +1,25 @@
+name: cielo_lio_helper_example
+description: Demonstrates how to use the cielo_lio_helper plugin.
+
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cielo_lio_helper:
+    # When depending on this package from a real application you should use:
+    #   cielo_lio_helper: ^x.y.z
+    path: ../
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

@@ -1,5 +1,7 @@
 # cielo_lio_helper
 
+[![pub package](https://img.shields.io/pub/v/cielo_lio_helper.svg)](https://pub.dev/packages/cielo_lio_helper)
+
 A Flutter plugin for [Cielo Lio V2](https://developercielo.github.io/en/manual/cielo-lio).
 
 ## Getting Started

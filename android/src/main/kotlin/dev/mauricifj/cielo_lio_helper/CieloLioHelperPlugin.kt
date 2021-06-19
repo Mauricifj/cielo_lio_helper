@@ -104,6 +104,32 @@ class CieloLioHelperPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Plu
         "print" -> callLio(call.argument<String>("uri")!!)
         "payment" -> callLio(call.argument<String>("uri")!!)
         "reversal" -> callLio(call.argument<String>("uri")!!)
+
+        else -> result.notImplemented()
+      }
+    } else {
+      when (call.method) {
+        "getEC" -> {
+          val ec = getEC()
+          if (ec == null) {
+            result.error("ec_null", "Couldn't retrieve ec", null)
+          }
+          result.success(ec)
+        }
+        "getLogicNumber" -> {
+          val logicNumber = getLogicNumber()
+          if (logicNumber == null) {
+            result.error("logic_number_null", "Couldn't retrieve logic number", null)
+          }
+          result.success(logicNumber)
+        }
+        "getBatteryLevel" -> {
+          val batteryLevel = getBatteryLevel()
+          if (batteryLevel == null) {
+            result.error("battery_level_null", "Couldn't retrieve battery level", null)
+          }
+          result.success(batteryLevel)
+        }
         "retrievePaymentType" -> {
           val clientId = call.argument<String>("clientId")
           val accessToken = call.argument<String>("accessToken")
@@ -130,31 +156,6 @@ class CieloLioHelperPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Plu
         }
         else -> result.notImplemented()
       }
-    } else {
-      when (call.method) {
-        "getEC" -> {
-          val ec = getEC()
-          if (ec == null) {
-            result.error("ec_null", "Couldn't retrieve ec", null)
-          }
-          result.success(ec)
-        }
-        "getLogicNumber" -> {
-          val logicNumber = getLogicNumber()
-          if (logicNumber == null) {
-            result.error("logic_number_null", "Couldn't retrieve logic number", null)
-          }
-          result.success(logicNumber)
-        }
-        "getBatteryLevel" -> {
-          val batteryLevel = getBatteryLevel()
-          if (batteryLevel == null) {
-            result.error("battery_level_null", "Couldn't retrieve battery level", null)
-          }
-          result.success(batteryLevel)
-        }
-        else -> result.notImplemented()
-      }
     }
   }
 
@@ -171,8 +172,8 @@ class CieloLioHelperPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Plu
   }
 
   private fun getBatteryLevel() : Float? {
-    val batteryStatus: Intent? = IntentFilter(Intent.ACTION_BATTERY_CHANGED).let { ifilter ->
-      applicationContext.registerReceiver(null, ifilter)
+    val batteryStatus: Intent? = IntentFilter(Intent.ACTION_BATTERY_CHANGED).let { intentFilter ->
+      applicationContext.registerReceiver(null, intentFilter)
     }
 
     val batteryPercentage: Float? = batteryStatus?.let { intent ->

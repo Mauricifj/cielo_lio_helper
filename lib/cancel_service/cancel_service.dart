@@ -14,11 +14,13 @@ class CancelService {
   final String _host;
   final MethodChannel _messagesChannel;
   static Stream<PaymentResponse> _streamLink;
-  static const EventChannel _responsesChannel = const EventChannel("cielo_lio_helper/payment_responses");
+  static const EventChannel _responsesChannel =
+      const EventChannel("cielo_lio_helper/payment_responses");
 
   CancelService(this._scheme, this._host, this._messagesChannel);
 
-  cancelPayment(CancelRequest request, Function(PaymentResponse response) callback) async {
+  cancelPayment(CancelRequest request,
+      Function(PaymentResponse response) callback) async {
     _stream().listen((PaymentResponse response) {
       if (response.status == "ENTERED") {
         print(response.id);

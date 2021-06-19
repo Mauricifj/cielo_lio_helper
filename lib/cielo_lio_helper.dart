@@ -16,7 +16,8 @@ import 'cancel_service/cancel_service.dart';
 import 'scheme_aggregate.dart';
 
 class CieloLioHelper {
-  static const MethodChannel _channel = const MethodChannel('cielo_lio_helper/messages');
+  static const MethodChannel _channel =
+      const MethodChannel('cielo_lio_helper/messages');
   static PrinterService _printer;
   static PaymentService _paymentService;
   static CancelService _cancelService;
@@ -24,12 +25,15 @@ class CieloLioHelper {
   /// Sets host and schemes for print, checkout and cancel responses from Lio
   static init({String host, SchemeAggregate schemes}) {
     _printer = PrinterService(schemes.printResponseScheme, host, _channel);
-    _paymentService = PaymentService(schemes.paymentResponseScheme, host, _channel);
-    _cancelService = CancelService(schemes.reversalResponseScheme, host, _channel);
+    _paymentService =
+        PaymentService(schemes.paymentResponseScheme, host, _channel);
+    _cancelService =
+        CancelService(schemes.reversalResponseScheme, host, _channel);
   }
 
   /// Enqueue text and its style but does not print
-  static enqueue(String text, PrintAlignment alignment, int size, int typeface) {
+  static enqueue(
+      String text, PrintAlignment alignment, int size, int typeface) {
     _printer.enqueue(text, alignment, size, typeface);
   }
 
@@ -57,12 +61,14 @@ class CieloLioHelper {
   }
 
   /// Sends a [CheckoutRequest] to Lio and waits until the payment is finished or canceled to execute [callback]
-  static checkout(CheckoutRequest request, Function(PaymentResponse response) callback) {
+  static checkout(
+      CheckoutRequest request, Function(PaymentResponse response) callback) {
     _paymentService.checkout(request, callback);
   }
 
   /// Sends a [CancelRequest] to Lio and waits until the cancelment is finished or canceled to execute [callback]
-  static cancelPayment(CancelRequest request, Function(PaymentResponse response) callback) {
+  static cancelPayment(
+      CancelRequest request, Function(PaymentResponse response) callback) {
     _cancelService.cancelPayment(request, callback);
   }
 }

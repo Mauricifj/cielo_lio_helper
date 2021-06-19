@@ -10,9 +10,7 @@ const String sampleText = "SAMPLE TEXT";
 const String clientId = "YOUR-CLIENT-ID";
 const String accessToken = "YOUR-ACCESS-TOKEN";
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
@@ -23,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   String _ec = 'Unknown';
   String _logicNumber = 'Unknown';
   double _batteryLevel = -1;
-  LioResponse _printResponse = LioResponse(-1, "Unknown");
+  LioResponse _printResponse;
   bool _isPrinting = false;
   CancelRequest _cancelRequest;
 
@@ -170,6 +168,12 @@ class _MyAppState extends State<MyApp> {
         }));
   }
 
+  String checkPrintState() {
+    if (_isPrinting) return "PRINTING...";
+    if (_printResponse?.message != null) return _printResponse.message;
+    return "Unknown";
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -183,7 +187,7 @@ class _MyAppState extends State<MyApp> {
               Text('EC: $_ec'),
               Text('LOGIC NUMBER: $_logicNumber'),
               Text('BATTERY LEVEL: ${_batteryLevel >= 0 ? "${_batteryLevel.toString()}%" : "Unknown"}'),
-              Text('PRINT STATE: ${_isPrinting ? "PRINTING..." : _printResponse.message}'),
+              Text('PRINT STATE: ${checkPrintState()}'),
               ElevatedButton(onPressed: () => printSampleTexts(), child: Text("Imprimir")),
               ElevatedButton(onPressed: () => checkout(), child: Text("Pagar")),
               ElevatedButton(onPressed: () => cancelLastPayment(), child: Text("Cancelar último pagamento")),

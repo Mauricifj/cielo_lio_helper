@@ -3,5 +3,9 @@ class SchemeAggregate {
   final String paymentResponseScheme;
   final String reversalResponseScheme;
 
-  SchemeAggregate({this.printResponseScheme, this.paymentResponseScheme, this.reversalResponseScheme});
+  SchemeAggregate({
+    this.printResponseScheme,
+    this.paymentResponseScheme,
+    this.reversalResponseScheme,
+  });
 }

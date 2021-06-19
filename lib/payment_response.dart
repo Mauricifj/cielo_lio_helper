@@ -68,7 +68,8 @@ class PaymentResponse {
     data['number'] = this.number;
     data['paidAmount'] = this.paidAmount;
     if (this.payments != null) {
-      data['payments'] = this.payments.map((payment) => payment.toJson()).toList();
+      data['payments'] =
+          this.payments.map((payment) => payment.toJson()).toList();
     }
     data['pendingAmount'] = this.pendingAmount;
     data['price'] = this.price;

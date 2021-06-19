@@ -5,7 +5,11 @@ class Style {
   int keyAttributesTextsize;
   int keyAttributesTypeface;
 
-  Style({this.keyAttributesAlign, this.keyAttributesTextsize, this.keyAttributesTypeface = 0});
+  Style({
+    this.keyAttributesAlign,
+    this.keyAttributesTextsize,
+    this.keyAttributesTypeface = 0,
+  });
 
   Style.fromJson(Map<String, dynamic> json) {
     keyAttributesAlign = json[PrintAttributes.align];

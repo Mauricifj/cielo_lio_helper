@@ -17,7 +17,8 @@ class PrinterService {
   final String _host;
 
   static Stream<LioResponse> _streamLink;
-  static const EventChannel _responsesChannel = const EventChannel("cielo_lio_helper/print_responses");
+  static const EventChannel _responsesChannel =
+      const EventChannel("cielo_lio_helper/print_responses");
 
   QueueManager _queueManager;
 
@@ -52,14 +53,16 @@ class PrinterService {
     _queueManager.print(callback);
   }
 
-  String _generatePrintUri(String text, PrintAlignment alignment, int size, int typeface) {
+  String _generatePrintUri(
+      String text, PrintAlignment alignment, int size, int typeface) {
     try {
       var style = Style(
           keyAttributesAlign: alignment.toPrinterAttribute(),
           keyAttributesTextsize: size,
           keyAttributesTypeface: typeface);
       var styles = List<Style>.from([style]);
-      PrintRequest printRequest = new PrintRequest(PrintOperation.text, styles, List.from([text]));
+      PrintRequest printRequest =
+          new PrintRequest(PrintOperation.text, styles, List.from([text]));
       String base64 = toBase64(printRequest);
       return "lio://print?request=$base64&urlCallback=$_scheme://$_host";
     } catch (e) {

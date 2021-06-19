@@ -54,7 +54,9 @@ class Payment {
     installments = json['installments'];
     mask = json['mask'];
     merchantCode = json['merchantCode'];
-    paymentFields = json['paymentFields'] != null ? new PaymentFields.fromJson(json['paymentFields']) : null;
+    paymentFields = json['paymentFields'] != null
+        ? new PaymentFields.fromJson(json['paymentFields'])
+        : null;
     primaryCode = json['primaryCode'];
     requestDate = json['requestDate'];
     secondaryCode = json['secondaryCode'];

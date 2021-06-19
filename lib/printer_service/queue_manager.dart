@@ -9,7 +9,8 @@ class QueueManager {
   Queue<String> _queue = Queue();
   Function(LioResponse response) callback;
 
-  QueueManager({MethodChannel messagesChannel}) : this._messagesChannel = messagesChannel;
+  QueueManager({MethodChannel messagesChannel})
+      : this._messagesChannel = messagesChannel;
 
   processResponse(LioResponse response) {
     _queue.removeFirst();

@@ -14,11 +14,13 @@ class PaymentService {
   final String _host;
   final MethodChannel _messagesChannel;
   static Stream<PaymentResponse> _streamLink;
-  static const EventChannel _responsesChannel = const EventChannel("cielo_lio_helper/payment_responses");
+  static const EventChannel _responsesChannel =
+      const EventChannel("cielo_lio_helper/payment_responses");
 
   PaymentService(this._scheme, this._host, this._messagesChannel);
 
-  checkout(CheckoutRequest request, Function(PaymentResponse response) callback) async {
+  checkout(CheckoutRequest request,
+      Function(PaymentResponse response) callback) async {
     _stream().listen((response) {
       if (response != null) {
         print(response.id);

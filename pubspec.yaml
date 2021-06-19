@@ -1,6 +1,6 @@
 name: cielo_lio_helper
 description: A Flutter plugin for Cielo Lio V2 for easy access to OrderManager and InfoManager.
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/mauricifj/cielo_lio_helper
 
 environment:

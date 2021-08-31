@@ -1,3 +1,7 @@
+## [0.2.0] - 2021-08-31
+
+- Added support to null safe
+
 ## [0.1.1] - 2021-06-18
 
 - Added more information to description

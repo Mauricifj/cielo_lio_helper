@@ -18,13 +18,13 @@ import 'scheme_aggregate.dart';
 class CieloLioHelper {
   static const MethodChannel _channel =
       const MethodChannel('cielo_lio_helper/messages');
-  static PrinterService _printer;
-  static PaymentService _paymentService;
-  static CancelService _cancelService;
+  static PrinterService? _printer;
+  static PaymentService? _paymentService;
+  static CancelService? _cancelService;
 
   /// Sets host and schemes for print, checkout and cancel responses from Lio
-  static init({String host, SchemeAggregate schemes}) {
-    _printer = PrinterService(schemes.printResponseScheme, host, _channel);
+  static init({String? host, SchemeAggregate? schemes}) {
+    _printer = PrinterService(schemes!.printResponseScheme, host, _channel);
     _paymentService =
         PaymentService(schemes.paymentResponseScheme, host, _channel);
     _cancelService =
@@ -34,12 +34,12 @@ class CieloLioHelper {
   /// Enqueue text and its style but does not print
   static enqueue(
       String text, PrintAlignment alignment, int size, int typeface) {
-    _printer.enqueue(text, alignment, size, typeface);
+    _printer!.enqueue(text, alignment, size, typeface);
   }
 
   /// Print all texts enqueued by [CieloLioHelper.enqueue()] and execute [callback] when it's done
   static printQueue(Function(LioResponse response) callback) {
-    _printer.print(callback);
+    _printer!.print(callback);
   }
 
   /// Returns the establishment code from InfoManager of Lio
@@ -63,12 +63,12 @@ class CieloLioHelper {
   /// Sends a [CheckoutRequest] to Lio and waits until the payment is finished or canceled to execute [callback]
   static checkout(
       CheckoutRequest request, Function(PaymentResponse response) callback) {
-    _paymentService.checkout(request, callback);
+    _paymentService!.checkout(request, callback);
   }
 
   /// Sends a [CancelRequest] to Lio and waits until the cancelment is finished or canceled to execute [callback]
   static cancelPayment(
       CancelRequest request, Function(PaymentResponse response) callback) {
-    _cancelService.cancelPayment(request, callback);
+    _cancelService!.cancelPayment(request, callback);
   }
 }

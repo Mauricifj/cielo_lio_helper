@@ -1,9 +1,9 @@
 import 'print_attributes.dart';
 
 class Style {
-  int keyAttributesAlign;
-  int keyAttributesTextsize;
-  int keyAttributesTypeface;
+  int? keyAttributesAlign;
+  int? keyAttributesTextsize;
+  int? keyAttributesTypeface;
 
   Style({
     this.keyAttributesAlign,

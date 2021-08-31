@@ -1,11 +1,11 @@
 class CancelRequest {
-  String id;
-  String clientID;
-  String accessToken;
-  String cieloCode;
-  String authCode;
-  String merchantCode;
-  int value;
+  String? id;
+  String? clientID;
+  String? accessToken;
+  String? cieloCode;
+  String? authCode;
+  String? merchantCode;
+  int? value;
 
   CancelRequest({
     this.id,
@@ -17,7 +17,7 @@ class CancelRequest {
     this.value,
   });
 
-  CancelRequest.fromJson(Map<String, dynamic> json) {
+  CancelRequest.fromJson(Map<String?, dynamic> json) {
     id = json['id'];
     clientID = json['clientID'];
     accessToken = json['accessToken'];
@@ -27,8 +27,8 @@ class CancelRequest {
     value = json['value'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['id'] = this.id;
     data['clientID'] = this.clientID;
     data['accessToken'] = this.accessToken;

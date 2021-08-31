@@ -13,23 +13,23 @@ import 'print_style.dart';
 import 'queue_manager.dart';
 
 class PrinterService {
-  final String _scheme;
-  final String _host;
+  final String? _scheme;
+  final String? _host;
 
-  static Stream<LioResponse> _streamLink;
+  static Stream<LioResponse>? _streamLink;
   static const EventChannel _responsesChannel =
       const EventChannel("cielo_lio_helper/print_responses");
 
-  QueueManager _queueManager;
+  QueueManager? _queueManager;
 
   PrinterService(this._scheme, this._host, MethodChannel messagesChannel) {
     _queueManager = QueueManager(messagesChannel: messagesChannel);
     _stream().listen((LioResponse response) {
       if (response.code == 0) {
-        _queueManager.processResponse(response);
+        _queueManager!.processResponse(response);
       } else {
-        _queueManager.clear();
-        _queueManager.callback.call(response);
+        _queueManager!.clear();
+        _queueManager!.callback!.call(response);
       }
     });
   }
@@ -41,16 +41,16 @@ class PrinterService {
           .cast<String>()
           .map((response) => LioResponse.fromJson(jsonDecode(response)));
     }
-    return _streamLink;
+    return _streamLink!;
   }
 
   enqueue(String text, PrintAlignment alignment, int size, int typeface) {
     var uri = _generatePrintUri(text, alignment, size, typeface);
-    _queueManager.enqueue(uri);
+    _queueManager!.enqueue(uri);
   }
 
   print(Function(LioResponse response) callback) {
-    _queueManager.print(callback);
+    _queueManager!.print(callback);
   }
 
   String _generatePrintUri(

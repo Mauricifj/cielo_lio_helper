@@ -10,10 +10,10 @@ import '../utils.dart';
 import 'cancel_request.dart';
 
 class CancelService {
-  final String _scheme;
-  final String _host;
-  final MethodChannel _messagesChannel;
-  static Stream<PaymentResponse> _streamLink;
+  final String? _scheme;
+  final String? _host;
+  final MethodChannel? _messagesChannel;
+  static Stream<PaymentResponse>? _streamLink;
   static const EventChannel _responsesChannel =
       const EventChannel("cielo_lio_helper/payment_responses");
 
@@ -31,7 +31,7 @@ class CancelService {
     });
 
     var uri = _generateCancelUri(request);
-    await _messagesChannel.invokeMethod('reversal', {"uri": uri});
+    await _messagesChannel!.invokeMethod('reversal', {"uri": uri});
   }
 
   String _generateCancelUri(CancelRequest request) {
@@ -59,6 +59,6 @@ class CancelService {
         }
       });
     }
-    return _streamLink;
+    return _streamLink!;
   }
 }

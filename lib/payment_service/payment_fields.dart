@@ -1,54 +1,54 @@
 class PaymentFields {
-  String upFrontAmount;
-  String creditAdminTax;
-  String firstQuotaDate;
-  String hasSignature;
-  String hasPrintedClientReceipt;
-  String hasWarranty;
-  String interestAmount;
-  String serviceTax;
-  String cityState;
-  String hasSentReference;
-  String originalTransactionId;
-  String originalTransactionDate;
-  String signatureMd5;
-  String hasConnectivity;
-  String productName;
-  String entranceMode;
-  String firstQuotaAmount;
-  String cardCaptureType;
-  String requestDate;
-  String boardingTax;
-  String numberOfQuotas;
-  String isDoubleFontPrintAllowed;
-  String bin;
-  String hasPassword;
-  String primaryProductCode;
-  String isExternalCall;
-  String primaryProductName;
-  String receiptPrintPermission;
-  String isOnlyIntegrationCancelable;
-  String externalCallMerchantCode;
-  String isFinancialProduct;
-  String applicationName;
-  String changeAmount;
-  String v40Code;
-  String secondaryProductName;
-  String paymentTransactionId;
-  String avaiableBalance;
-  String pan;
-  String secondaryProductCode;
-  String hasSentMerchantCode;
-  String documentType;
-  String statusCode;
-  String merchantAddress;
-  String merchantCode;
-  String paymentTypeCode;
-  String merchantName;
-  String totalizerCode;
-  String applicationId;
-  String signatureBytes;
-  String document;
+  String? upFrontAmount;
+  String? creditAdminTax;
+  String? firstQuotaDate;
+  String? hasSignature;
+  String? hasPrintedClientReceipt;
+  String? hasWarranty;
+  String? interestAmount;
+  String? serviceTax;
+  String? cityState;
+  String? hasSentReference;
+  String? originalTransactionId;
+  String? originalTransactionDate;
+  String? signatureMd5;
+  String? hasConnectivity;
+  String? productName;
+  String? entranceMode;
+  String? firstQuotaAmount;
+  String? cardCaptureType;
+  String? requestDate;
+  String? boardingTax;
+  String? numberOfQuotas;
+  String? isDoubleFontPrintAllowed;
+  String? bin;
+  String? hasPassword;
+  String? primaryProductCode;
+  String? isExternalCall;
+  String? primaryProductName;
+  String? receiptPrintPermission;
+  String? isOnlyIntegrationCancelable;
+  String? externalCallMerchantCode;
+  String? isFinancialProduct;
+  String? applicationName;
+  String? changeAmount;
+  String? v40Code;
+  String? secondaryProductName;
+  String? paymentTransactionId;
+  String? avaiableBalance;
+  String? pan;
+  String? secondaryProductCode;
+  String? hasSentMerchantCode;
+  String? documentType;
+  String? statusCode;
+  String? merchantAddress;
+  String? merchantCode;
+  String? paymentTypeCode;
+  String? merchantName;
+  String? totalizerCode;
+  String? applicationId;
+  String? signatureBytes;
+  String? document;
 
   PaymentFields(
       {this.upFrontAmount,
@@ -102,7 +102,7 @@ class PaymentFields {
       this.signatureBytes,
       this.document});
 
-  PaymentFields.fromJson(Map<String, dynamic> json) {
+  PaymentFields.fromJson(Map<String?, dynamic> json) {
     upFrontAmount = json['upFrontAmount'];
     creditAdminTax = json['creditAdminTax'];
     firstQuotaDate = json['firstQuotaDate'];
@@ -155,8 +155,8 @@ class PaymentFields {
     document = json['document'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['upFrontAmount'] = this.upFrontAmount;
     data['creditAdminTax'] = this.creditAdminTax;
     data['firstQuotaDate'] = this.firstQuotaDate;

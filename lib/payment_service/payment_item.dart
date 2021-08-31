@@ -1,13 +1,13 @@
 class PaymentItem {
-  String description;
-  String details;
-  String id;
-  String name;
-  int quantity;
-  String reference;
-  String sku;
-  String unitOfMeasure;
-  int unitPrice;
+  String? description;
+  String? details;
+  String? id;
+  String? name;
+  int? quantity;
+  String? reference;
+  String? sku;
+  String? unitOfMeasure;
+  int? unitPrice;
 
   PaymentItem(
       {this.description,
@@ -20,7 +20,7 @@ class PaymentItem {
       this.unitOfMeasure,
       this.unitPrice});
 
-  PaymentItem.fromJson(Map<String, dynamic> json) {
+  PaymentItem.fromJson(Map<String?, dynamic> json) {
     description = json['description'];
     details = json['details'];
     id = json['id'];
@@ -32,8 +32,8 @@ class PaymentItem {
     unitPrice = json['unitPrice'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['description'] = this.description;
     data['details'] = this.details;
     data['id'] = this.id;

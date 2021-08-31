@@ -1,13 +1,13 @@
 class CheckoutRequest {
-  String clientID;
-  String accessToken;
-  int value;
-  String paymentCode;
-  int installments;
-  String email;
-  String merchantCode;
-  String reference;
-  List<Item> items;
+  String? clientID;
+  String? accessToken;
+  int? value;
+  String? paymentCode;
+  int? installments;
+  String? email;
+  String? merchantCode;
+  String? reference;
+  List<Item>? items;
 
   CheckoutRequest({
     this.clientID,
@@ -21,7 +21,7 @@ class CheckoutRequest {
     this.items,
   });
 
-  CheckoutRequest.fromJson(Map<String, dynamic> json) {
+  CheckoutRequest.fromJson(Map<String?, dynamic> json) {
     clientID = json['clientID'];
     accessToken = json['accessToken'];
     value = json['value'];
@@ -33,13 +33,13 @@ class CheckoutRequest {
     if (json['items'] != null) {
       items = new List<Item>.empty(growable: true);
       json['items'].forEach((item) {
-        items.add(new Item.fromJson(item));
+        items!.add(new Item.fromJson(item));
       });
     }
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['clientID'] = this.clientID;
     data['accessToken'] = this.accessToken;
     data['value'] = this.value;
@@ -49,18 +49,18 @@ class CheckoutRequest {
     data['merchantCode'] = this.merchantCode;
     data['reference'] = this.reference;
     if (this.items != null) {
-      data['items'] = this.items.map((item) => item.toJson()).toList();
+      data['items'] = this.items!.map((item) => item.toJson()).toList();
     }
     return data;
   }
 }
 
 class Item {
-  String sku;
-  String name;
-  int unitPrice;
-  int quantity;
-  String unitOfMeasure;
+  String? sku;
+  String? name;
+  int? unitPrice;
+  int? quantity;
+  String? unitOfMeasure;
 
   Item({
     this.sku,
@@ -70,7 +70,7 @@ class Item {
     this.unitOfMeasure,
   });
 
-  Item.fromJson(Map<String, dynamic> json) {
+  Item.fromJson(Map<String?, dynamic> json) {
     sku = json['sku'];
     name = json['name'];
     unitPrice = json['unitPrice'];
@@ -78,8 +78,8 @@ class Item {
     unitOfMeasure = json['unitOfMeasure'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['sku'] = this.sku;
     data['name'] = this.name;
     data['unitPrice'] = this.unitPrice;

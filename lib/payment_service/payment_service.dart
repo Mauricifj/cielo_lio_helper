@@ -10,10 +10,10 @@ import '../utils.dart';
 import 'checkout_request.dart';
 
 class PaymentService {
-  final String _scheme;
-  final String _host;
-  final MethodChannel _messagesChannel;
-  static Stream<PaymentResponse> _streamLink;
+  final String? _scheme;
+  final String? _host;
+  final MethodChannel? _messagesChannel;
+  static Stream<PaymentResponse>? _streamLink;
   static const EventChannel _responsesChannel =
       const EventChannel("cielo_lio_helper/payment_responses");
 
@@ -22,14 +22,12 @@ class PaymentService {
   checkout(CheckoutRequest request,
       Function(PaymentResponse response) callback) async {
     _stream().listen((response) {
-      if (response != null) {
-        print(response.id);
-        callback.call(response);
-      }
+      print(response.id);
+      callback.call(response);
     });
 
     var uri = _generatePaymentUri(request);
-    await _messagesChannel.invokeMethod('payment', {"uri": uri});
+    await _messagesChannel!.invokeMethod('payment', {"uri": uri});
   }
 
   String _generatePaymentUri(CheckoutRequest request) {
@@ -59,6 +57,6 @@ class PaymentService {
         },
       );
     }
-    return _streamLink;
+    return _streamLink!;
   }
 }

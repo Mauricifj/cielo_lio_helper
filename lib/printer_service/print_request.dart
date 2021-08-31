@@ -1,9 +1,9 @@
 import 'print_style.dart';
 
 class PrintRequest {
-  String operation;
-  List<Style> styles;
-  List<String> value;
+  String? operation;
+  List<Style>? styles;
+  List<String>? value;
 
   PrintRequest(this.operation, this.styles, this.value);
 
@@ -12,7 +12,7 @@ class PrintRequest {
     if (json['styles'] != null) {
       styles = List<Style>.empty(growable: true);
       json['styles'].forEach((style) {
-        styles.add(Style.fromJson(style));
+        styles!.add(Style.fromJson(style));
       });
     }
     value = json['value'].cast<String>();
@@ -23,7 +23,7 @@ class PrintRequest {
     data['operation'] = this.operation;
     data['value'] = this.value;
     if (this.styles != null) {
-      data['styles'] = this.styles.map((style) => style.toJson()).toList();
+      data['styles'] = this.styles!.map((style) => style.toJson()).toList();
     }
     return data;
   }

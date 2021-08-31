@@ -186,11 +186,15 @@ class _MyAppState extends State<MyApp> {
             children: [
               Text('EC: $_ec'),
               Text('LOGIC NUMBER: $_logicNumber'),
-              Text('BATTERY LEVEL: ${_batteryLevel >= 0 ? "${_batteryLevel.toString()}%" : "Unknown"}'),
+              Text(
+                  'BATTERY LEVEL: ${_batteryLevel >= 0 ? "${_batteryLevel.toString()}%" : "Unknown"}'),
               Text('PRINT STATE: ${checkPrintState()}'),
-              ElevatedButton(onPressed: () => printSampleTexts(), child: Text("Imprimir")),
+              ElevatedButton(
+                  onPressed: () => printSampleTexts(), child: Text("Imprimir")),
               ElevatedButton(onPressed: () => checkout(), child: Text("Pagar")),
-              ElevatedButton(onPressed: () => cancelLastPayment(), child: Text("Cancelar último pagamento")),
+              ElevatedButton(
+                  onPressed: () => cancelLastPayment(),
+                  child: Text("Cancelar último pagamento")),
             ],
           ),
         ),

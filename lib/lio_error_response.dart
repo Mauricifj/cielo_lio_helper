@@ -1,6 +1,6 @@
 class LioErrorResponse {
-  int code;
-  String reason;
+  int? code;
+  String? reason;
 
   LioErrorResponse({this.code, this.reason});
 

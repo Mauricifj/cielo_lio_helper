@@ -1,24 +1,24 @@
 import 'payment_fields.dart';
 
 class Payment {
-  String accessKey;
-  int amount;
-  String applicationName;
-  String authCode;
-  String brand;
-  String cieloCode;
-  String description;
-  int discountedAmount;
-  String externalId;
-  String id;
-  int installments;
-  String mask;
-  String merchantCode;
-  PaymentFields paymentFields;
-  String primaryCode;
-  String requestDate;
-  String secondaryCode;
-  String terminal;
+  String? accessKey;
+  int? amount;
+  String? applicationName;
+  String? authCode;
+  String? brand;
+  String? cieloCode;
+  String? description;
+  int? discountedAmount;
+  String? externalId;
+  String? id;
+  int? installments;
+  String? mask;
+  String? merchantCode;
+  PaymentFields? paymentFields;
+  String? primaryCode;
+  String? requestDate;
+  String? secondaryCode;
+  String? terminal;
 
   Payment(
       {this.accessKey,
@@ -40,7 +40,7 @@ class Payment {
       this.secondaryCode,
       this.terminal});
 
-  Payment.fromJson(Map<String, dynamic> json) {
+  Payment.fromJson(Map<String?, dynamic> json) {
     accessKey = json['accessKey'];
     amount = json['amount'];
     applicationName = json['applicationName'];
@@ -63,8 +63,8 @@ class Payment {
     terminal = json['terminal'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['accessKey'] = this.accessKey;
     data['amount'] = this.amount;
     data['applicationName'] = this.applicationName;
@@ -79,7 +79,7 @@ class Payment {
     data['mask'] = this.mask;
     data['merchantCode'] = this.merchantCode;
     if (this.paymentFields != null) {
-      data['paymentFields'] = this.paymentFields.toJson();
+      data['paymentFields'] = this.paymentFields!.toJson();
     }
     data['primaryCode'] = this.primaryCode;
     data['requestDate'] = this.requestDate;
